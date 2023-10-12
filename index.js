@@ -1,3 +1,4 @@
+const fs = require('fs');
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer')
 
@@ -29,7 +30,7 @@ const questions = [
         type: "list",
         name: "license",
         message: "Choose a license for the project: ",
-        choices: ["GNU AGPLv3", "GNU GPLv3", "GNU LGPLv3", "Mozilla Public 2.0", "MIT", "Apache", "None" ]
+        choices: ["agpl-3.0", "gpl-3.0", "lgpl-3.0", "mpl-2.0", "mit", "apache-2.0", "none" ]
     },
     {
         type: "input",
@@ -46,18 +47,32 @@ const questions = [
         name: "github",
         message: "Enter your github username: "
     },
-    
+    {
+        type: "input",
+        name: "email",
+        message: "Enter your email: "
+    }
 
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+fs.writeFile(fileName, data, (error)=> {
+ if(error){
+    console.log(error)
+ } else {
+    console.log('Successful!')
+ }
+})
+}
 
 // TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions)
     .then((answers)=> {
-        generateMarkdown(answers);
+        var data = generateMarkdown(answers);
+        writeToFile('./utils/README.md', data)
+        
     })
 }
 
