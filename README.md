@@ -8,7 +8,7 @@ The purpose of this open-source project is to create an application that dynamic
 - This application was created to eliminate and replace having to manually produce this widely used documentation.
 - By automating this process, this application saves on consuming one of the most precious resources known - time.
 
-## Table of Contents (Optional)
+## Table of Contents
 
 If your README is long, add a table of contents to make it easy for users to find what they need.
 
